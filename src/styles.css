@@ -1,0 +1,225 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * LAGUNE PALACE — design system
+ * Noir profond, ivoire, beige, doré subtil.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-noir: var(--noir);
+  --color-ivoire: var(--ivoire);
+  --color-beige: var(--beige);
+  --color-or: var(--or);
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Jost", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.125rem;
+
+  --noir: oklch(0.14 0.008 60);
+  --ivoire: oklch(0.96 0.012 85);
+  --beige: oklch(0.86 0.026 82);
+  --or: oklch(0.78 0.09 82);
+
+  --background: oklch(0.14 0.008 60);
+  --foreground: oklch(0.96 0.012 85);
+  --card: oklch(0.18 0.009 62);
+  --card-foreground: oklch(0.96 0.012 85);
+  --popover: oklch(0.18 0.009 62);
+  --popover-foreground: oklch(0.96 0.012 85);
+  --primary: oklch(0.78 0.09 82);
+  --primary-foreground: oklch(0.14 0.008 60);
+  --secondary: oklch(0.24 0.012 65);
+  --secondary-foreground: oklch(0.96 0.012 85);
+  --muted: oklch(0.22 0.01 64);
+  --muted-foreground: oklch(0.72 0.016 80);
+  --accent: oklch(0.86 0.026 82);
+  --accent-foreground: oklch(0.14 0.008 60);
+  --destructive: oklch(0.55 0.19 27);
+  --destructive-foreground: oklch(0.96 0.012 85);
+  --border: oklch(0.96 0.012 85 / 14%);
+  --input: oklch(0.96 0.012 85 / 18%);
+  --ring: oklch(0.78 0.09 82 / 60%);
+
+  --shadow-soft: 0 30px 80px -40px oklch(0 0 0 / 0.9);
+  --gradient-veil: linear-gradient(
+    to top,
+    oklch(0.12 0.008 60 / 0.95) 0%,
+    oklch(0.12 0.008 60 / 0.45) 45%,
+    oklch(0.12 0.008 60 / 0.55) 100%
+  );
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: 0.01em;
+  }
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--or);
+}
+
+@utility veil {
+  background-image: var(--gradient-veil);
+}
+
+@utility btn-or {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 2rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  background-color: var(--or);
+  color: var(--primary-foreground);
+  border: 1px solid var(--or);
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease,
+    transform 0.4s ease;
+  &:hover {
+    background-color: transparent;
+    color: var(--or);
+    transform: translateY(-2px);
+  }
+}
+
+@utility btn-ghost-or {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 2rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: var(--ivoire);
+  border: 1px solid oklch(0.96 0.012 85 / 45%);
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease,
+    border-color 0.4s ease,
+    transform 0.4s ease;
+  &:hover {
+    background-color: var(--ivoire);
+    color: var(--noir);
+    border-color: var(--ivoire);
+    transform: translateY(-2px);
+  }
+}
+
+@utility link-nav {
+  position: relative;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ivoire);
+  transition: color 0.35s ease;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.4rem;
+    height: 1px;
+    width: 100%;
+    background-color: var(--or);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease;
+  }
+  &:hover {
+    color: var(--or);
+  }
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@utility reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes slow-zoom {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: scale(1.18);
+  }
+}
+
+@utility slow-zoom {
+  animation: slow-zoom 24s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slow-zoom {
+    animation: none;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
