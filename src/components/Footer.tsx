@@ -70,8 +70,9 @@ export function Footer() {
       </div>
 
       <div className="border-t border-border">
-        <p className="mx-auto max-w-[1400px] px-6 py-7 text-center text-[0.66rem] uppercase tracking-[0.22em] text-muted-foreground lg:px-10">
-          © 2026 LAGUNE PALACE — Hôtel fictif
+        <p className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-center gap-x-3 px-6 py-7 text-center text-[0.66rem] uppercase tracking-[0.22em] text-muted-foreground lg:px-10">
+          <span>© 2026 LAGUNE PALACE — Hôtel fictif</span>
+          <span>Made by Naon Ismael</span>
         </p>
       </div>
     </footer>
